@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Орёл — Отправная точка | Культурные приключения по Пушкинской карте</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* === ОСНОВНЫЕ СТИЛИ И ЦВЕТА === */
+:root {
+--orange: #FF6B35;
+--lime: #CDDC39;
+--dark-gray: #2D2D2D;
+--light-gray: #F5F5F5;
+--text: #212121;
+--white: #FFFFFF;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+color: var(--text);
+background-color: var(--white);
+line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+font-weight: 700;
+}
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 15px;
+}
+
+section {
+padding: 80px 0;
+}
+
+.btn {
+display: inline-block;
+padding: 14px 32px;
+border-radius: 50px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+border: none;
+font-size: 1rem;
+}
+
+.btn-primary {
+background-color: var(--lime);
+color: var(--dark-gray);
+}
+
+.btn-secondary {
+background-color: transparent;
+color: var(--orange);
+border: 2px solid var(--orange);
+}
+
+.btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+background-color: #bdc832;
+}
+
+.btn-secondary:hover {
+background-color: var(--orange);
+color: white;
+}
+
+.section-title {
+text-align: center;
+margin-bottom: 50px;
+font-size: 2.5rem;
+color: var(--dark-gray);
+position: relative;
+}
+
+.section-title:after {
+content: '';
+position: absolute;
+width: 100px;
+height: 4px;
+background-color: var(--orange);
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+/* === HEADER === */
+header {
+background-color: var(--dark-gray);
+padding: 20px 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+color: var(--white);
+font-size: 1.8rem;
+font-weight: 700;
+}
+
+.logo span {
+color: var(--orange);
+}
+
+nav ul {
+display: flex;
+list-style: none;
+}
+
+nav ul li {
+margin-left: 30px;
+}
+
+nav ul li a {
+color: var(--white);
+font-weight: 500;
+transition: color 0.3s;
+}
+
+nav ul li a:hover {
+color: var(--orange);
+}
+
+.menu-toggle {
+display: none;
+color: white;
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+/* === HERO === */
+.hero {
+background: linear-gradient(rgba(45, 45, 45, 0.85), rgba(45, 45, 45, 0.9)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+color: var(--white);
+text-align: center;
+padding: 120px 0;
+}
+
+.hero h1 {
+font-size: 3.2rem;
+margin-bottom: 20px;
+line-height: 1.2;
+}
+
+.hero p {
+font-size: 1.3rem;
+max-width: 700px;
+margin: 0 auto 40px;
+color: #ddd;
+}
+
+.hero-btns {
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+/* === ОСНОВНОЙ КОНТЕНТ === */
+.content-block {
+background-color: var(--white);
+padding: 60px 0;
+}
+
+.content-block-gray {
+background-color: var(--light-gray);
+}
+
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 40px;
+}
+
+.info-card {
+background: var(--white);
+padding: 30px;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+border: 1px solid #eee;
+}
+
+.info-card h3 {
+color: var(--orange);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.info-card ul {
+padding-left: 20px;
+margin-bottom: 20px;
+}
+
+.info-card li {
+margin-bottom: 10px;
+}
+
+.icon-box {
+width: 50px;
+height: 50px;
+background-color: var(--lime);
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 20px;
+color: var(--dark-gray);
+font-size: 1.5rem;
+}
+
+/* === TOURS === */
+.tour-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 40px;
+}
+
+.card {
+background: var(--white);
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+transition: transform 0.3s ease;
+border: 1px solid #eee;
+}
+
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card-img {
+height: 200px;
+overflow: hidden;
+}
+
+.card-img img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s;
+}
+
+.card:hover .card-img img {
+transform: scale(1.05);
+}
+
+.card-content {
+padding: 25px;
+}
+
+.card-content h3 {
+color: var(--dark-gray);
+margin-bottom: 10px;
+font-size: 1.5rem;
+}
+
+.card-content p {
+color: #666;
+margin-bottom: 15px;
+}
+
+.card-tag {
+display: inline-block;
+background-color: var(--orange);
+color: white;
+padding: 5px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+margin-bottom: 15px;
+}
+
+.card-price {
+font-size: 1.8rem;
+font-weight: 700;
+color: var(--dark-gray);
+margin: 20px 0;
+padding: 15px;
+background-color: rgba(205, 220, 57, 0.1);
+border-radius: 8px;
+}
+
+.card-price small {
+font-size: 1rem;
+color: #777;
+font-weight: 400;
+display: block;
+margin-top: 5px;
+}
+
+.tour-details {
+background-color: #f9f9f9;
+padding: 20px;
+border-radius: 8px;
+margin: 20px 0;
+}
+
+.tour-details h4 {
+color: var(--dark-gray);
+margin-bottom: 10px;
+}
+
+/* === ПУШКИНСКАЯ КАРТА === */
+.pushkin-section {
+background: linear-gradient(135deg, var(--dark-gray) 0%, #3d3d3d 100%);
+color: white;
+}
+
+.pushkin-card {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+padding: 40px;
+border-radius: 15px;
+margin-top: 40px;
+}
+
+.pushkin-steps {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 30px;
+margin-top: 40px;
+}
+
+.pushkin-step {
+text-align: center;
+padding: 25px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 10px;
+}
+
+.step-number {
+display: inline-block;
+width: 40px;
+height: 40px;
+background-color: var(--lime);
+color: var(--dark-gray);
+border-radius: 50%;
+line-height: 40px;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+/* === КАК ПОЛУЧИТЬ БИЛЕТЫ === */
+.ticket-info {
+background-color: var(--light-gray);
+}
+
+.ticket-process {
+max-width: 800px;
+margin: 40px auto 0;
+padding: 40px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* === FOOTER === */
+footer {
+background-color: var(--dark-gray);
+color: #aaa;
+padding: 60px 0 30px;
+}
+
+.footer-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-logo {
+color: var(--white);
+font-size: 1.8rem;
+margin-bottom: 15px;
+}
+
+.footer-links h4, .footer-contact h4 {
+color: var(--white);
+margin-bottom: 25px;
+font-size: 1.2rem;
+}
+
+.footer-links ul {
+list-style: none;
+}
+
+.footer-links ul li {
+margin-bottom: 10px;
+}
+
+.footer-links ul li a:hover {
+color: var(--orange);
+}
+
+.social-icons {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+}
+
+.social-icons a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+background-color: #444;
+border-radius: 50%;
+color: white;
+transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+background-color: var(--orange);
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 30px;
+border-top: 1px solid #444;
+font-size: 0.9rem;
+color: #777;
+}
+
+.pushkin-logo {
+margin-top: 20px;
+font-weight: bold;
+color: var(--lime);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 992px) {
+.hero h1 {
+font-size: 2.5rem;
+}
+.section-title {
+font-size: 2rem;
+}
+}
+
+@media (max-width: 768px) {
+.menu-toggle {
+display: block;
+}
+nav ul {
+position: fixed;
+top: 70px;
+left: -100%;
+flex-direction: column;
+background-color: var(--dark-gray);
+width: 100%;
+text-align: center;
+transition: 0.3s;
+box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+padding: 20px 0;
+z-index: 999;
+}
+nav ul.active {
+left: 0;
+}
+nav ul li {
+margin: 15px 0;
+}
+.hero-btns {
+flex-direction: column;
+align-items: center;
+}
+.btn {
+width: 80%;
+max-width: 300px;
+margin-bottom: 10px;
+}
+section {
+padding: 60px 0;
+}
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+<div class="container header-container">
+<a href="#" class="logo">Орёл — <span>Отправная точка</span></a>
+<div class="menu-toggle" id="mobile-menu">
+<i class="fas fa-bars"></i>
+</div>
+<nav>
+<ul id="nav-menu">
+<li><a href="#home">Главная</a></li>
+<li><a href="#included">Что включено</a></li>
+<li><a href="#tours">Экскурсии</a></li>
+<li><a href="#pushkin">Пушкинская карта</a></li>
+<li><a href="#tickets">Как получить билеты</a></li>
+<li><a href="#contacts">Контакты</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+<div class="container">
+<h1>Отправляйся в культурное приключение прямо из Орла!</h1>
+<p>Живые интерактивные экскурсии для школьников и студентов. Оплачивай Пушкинской картой — путешествуй с пользой!</p>
+<div class="hero-btns">
+<a href="#tours" class="btn btn-primary">Смотреть все маршруты</a>
+<a href="#pushkin" class="btn btn-secondary">Как работает Пушкинская карта?</a>
+</div>
+</div>
+</section>
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+<div class="container">
+<h2 class="section-title">О проекте</h2>
+<div class="about-content">
+<section class="about-section" id="about">
+    <div class="container">
+            <h2><span class="accent-text">Искусство</span> — не из учебника</h2>
+            
+            <p>Мы превращаем посещение музеев в увлекательное приключение. Наши интерактивные автобусные туры из Орла созданы специально для школьников и студентов. Позвольте культуре говорить с вами на одном языке!</p>
+            
+            <div class="highlight-quote">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <span class="quote-text">«Позвольте детям увидеть искусство не в учебнике, а вживую!»</span>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+            
+            <p>Наша миссия — сделать культуру доступной, живой и увлекательной. Мы хотим, чтобы каждое культурное посещение стало не обязанностью, а приключением, которое пробуждает интерес к истории, искусству и стране.</p>
+            
+            <div class="mission-points">
+                <div class="mission-point">
+                    <div class="mission-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <p>Автобусные туры из Орла</p>
+                </div>
+                <div class="mission-point">
+                    <div class="mission-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <p>Для школьников и студентов</p>
+                </div>
+                <div class="mission-point">
+                    <div class="mission-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <p>Оплата Пушкинской картой</p>
+                </div>
+            </div>
+            
+            <a href="#tours" class="btn btn-primary" style="margin-top: 30px;">
+                <i class="fas fa-map-marked-alt"></i> Смотреть все экскурсии
+            </a>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ЧТО ВКЛЮЧЕНО В СТОИМОСТЬ -->
+<section class="content-block" id="included">
+<div class="container">
+<h2 class="section-title">Что включено в стоимость</h2>
+
+<div class="info-grid">
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-bus"></i>
+</div>
+<h3>Транспорт</h3>
+<p><strong>Трансфер на комфортабельном автобусе</strong> (вместимость автобуса зависит от набора группы). Все транспортные средства соответствуют требованиям безопасности и комфорта.</p>
+</div>
+
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-user-tie"></i>
+</div>
+<h3>Сопровождение</h3>
+<p><strong>Сопровождение квалифицированным гидом</strong> на протяжении всей поездки. Наши гиды имеют профильное образование и опыт работы с молодёжью.</p>
+</div>
+
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-ticket-alt"></i>
+</div>
+<h3>Входные билеты</h3>
+<p>Все входные билеты в музеи и культурные объекты согласно программе экскурсии. Билеты бронируются заранее для обеспечения доступа.</p>
+</div>
+
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-map-marked-alt"></i>
+</div>
+<h3>Экскурсионная программа</h3>
+<p>Тщательно разработанные маршруты с учётом возрастных особенностей и образовательных потребностей участников.</p>
+</div>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(255, 107, 53, 0.05); border-radius: 10px;">
+<h3><i class="fas fa-info-circle"></i> Важная информация</h3>
+<p><strong>Разнообразие туристических направлений</strong>, среди которых особенно популярны экскурсии выходного дня, позволяет каждому выбрать тур по неизведанному и интересному маршруту.</p>
+</div>
+</div>
+</section>
+
+<!-- ЭКСКУРСИИ -->
+<section class="content-block-gray" id="tours">
+<div class="container">
+<h2 class="section-title">Наши экскурсии</h2>
+<p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
+Автобусные туры с отправлением из Орла. Все экскурсии адаптированы для школьников и студентов.
+</p>
+
+<div class="tour-cards">
+<!-- ТУР 1: ТУЛЬСКИЙ КРЕМЛЬ -->
+<div class="card">
+<div class="card-img">
+<img src="https://avatars.dzeninfra.ru/get-zen_doc/9716076/pub_64735f2e9ba72050e62166b8_647365f0c819855a44ca8e7a/scale_1200"
+alt="Тульский Кремль">
+</div>
+<div class="card-content">
+<div class="card-tag">Тула • История</div>
+<h3>Тульский Кремль & Оружейная слава</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 8-10 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Орёл → Тульский Кремль → Музей оружия → Орёл</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Экскурсия по древней крепости XVI века и музею оружия с уникальной коллекцией. Интерактивная программа для школьников.</p>
+
+<div class="card-price">
+3500 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+
+<!-- ТУР 2: КАЛУГА КОСМОНАВТИКА -->
+<div class="card">
+<div class="card-img">
+<img src="https://avatars.dzeninfra.ru/get-zen_doc/1707183/pub_624af57ed41be806fb847180_624af7bcd41be806fb8af04f/scale_1200"
+alt="Музей космонавтики">
+</div>
+<div class="card-content">
+<div class="card-tag">Калуга • Наука</div>
+<h3>К звёздам! Музей космонавтики</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 9-11 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Орёл → Калуга (Музей космонавтики) → Орёл</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Поездка в Калугу - колыбель космонавтики. История покорения космоса, макеты ракет, интерактивные экспонаты.</p>
+
+<div class="card-price">
+3500 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+
+<!-- ТУР 3: ЛИТЕРАТУРНЫЙ ОРЁЛ -->
+<div class="card">
+<div class="card-img">
+<img src="https://vechor.ru/images/stories/OLGA/KULTURA/zdaniya/muz_turgeneva.png"
+alt="Литературный музей">
+</div>
+<div class="card-content">
+<div class="card-tag">Орёл • Литература</div>
+<h3>Литературный Орёл</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 5-6 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Музей Тургенева → Музей Бунина → Дворянское гнездо</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Погружение в эпоху великих русских писателей, связанных с Орлом. Экскурсия адаптирована для школьной программы.</p>
+
+<div class="card-price">
+2000 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+
+<!-- ТУР 4: СПАССКОЕ-ЛУТОВИНО & МЦЕНСК -->
+<div class="card">
+<div class="card-img">
+<img src="https://cdn.culture.ru/images/edffd33f-ce06-5366-8f11-f5d467a77a5a"
+alt="Усадьба Тургенева">
+</div>
+<div class="card-content">
+<div class="card-tag">Мценск • Ремесла</div>
+<h3>Спасское-Лутовиново & Мценское кружево</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 8-9 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Орёл → Мценск (музей кружева + мастер-класс) → Спасское-Лутовиново → Орёл</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Усадьба Тургенева, музей кружева с мастер-классом от кружевниц. Природа, история и народное искусство.</p>
+
+<div class="card-price">
+2500 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+
+<!-- ТУР 5: ПАРТИЗАНСКАЯ ПОЛЯНА (БРЯНСК) -->
+<div class="card">
+<div class="card-img">
+<img src="https://брянский-рабочий.рф/uploads/posts/202407/20240725_165934220.jpg"
+alt="Партизанская поляна">
+</div>
+<div class="card-content">
+<div class="card-tag">Брянск • История</div>
+<h3>Партизанская поляна & Мемориал "Хацунь"</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 10-12 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Орёл → Брянск (Партизанская поляна) → Хацунь → Орёл</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Экскурсия в Партизанскую поляну в Брянске и Мемориальный комплекс «Хацунь» (филиал Брянского краеведческого музея).</p>
+
+<div class="card-price">
+3000 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+
+<!-- ТУР 6: ПАМЯТНЫЕ МЕСТА МОСКВЫ -->
+<div class="card">
+<div class="card-img">
+<img src="https://elitfasad.ru/wp-content/uploads/2022/02/pic6-5.jpg"
+alt="Парк Победы Москва">
+</div>
+<div class="card-content">
+<div class="card-tag">Москва • Патриотика</div>
+<h3>Парк Победы & Храм Вооружённых Сил РФ</h3>
+
+<div class="tour-details">
+<h4><i class="far fa-clock"></i> Продолжительность: 12-14 часов</h4>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Маршрут:</strong> Орёл → Москва (Парк Победы, Храм ВС РФ) → Орёл</p>
+<p><i class="fas fa-language"></i> <strong>Язык:</strong> Русский</p>
+</div>
+
+<p>Познавательная и объединяющая поездка. В Парке Победы - мемориалы и аллеи. В Храме ВС РФ - архитектура и монументальные композиции.</p>
+
+<div class="card-price">
+3500 ₽ <small>по Пушкинской карте</small>
+</div>
+
+<a href="#tickets" class="btn btn-secondary" style="width: 100%; text-align: center;">Забронировать</a>
+</div>
+</div>
+</div>
+
+<div style="text-align: center; margin-top: 40px;">
+<p><i class="fas fa-info-circle"></i> <strong>Для родителей/сопровождающих:</strong> - 2000 ₽ в зависимости от выбранной экскурсии (включает проезд, билеты, экскурсию)</p>
+<p style="font-size: 0.9rem; color: #777; margin-top: 10px;">*Расписание: Ежедневно с 10:00 до 19:00</p>
+</div>
+
+<div style="background-color: #f0f8ff; padding: 30px; border-radius: 10px; margin-top: 40px;">
+<h3><i class="fas fa-plus-circle"></i> Добавить экскурсию</h3>
+<p>Хотите предложить свой маршрут или организовать индивидуальную экскурсию? Свяжитесь с нами для обсуждения деталей!</p>
+<a href="#contacts" class="btn btn-primary" style="margin-top: 15px;">Предложить маршрут</a>
+</div>
+</div>
+</section>
+
+<!-- ПУШКИНСКАЯ КАРТА -->
+<section class="pushkin-section" id="pushkin">
+<div class="container">
+<h2 class="section-title" style="color: white;">Пушкинская карта</h2>
+
+<div class="pushkin-card">
+<h3 style="color: var(--lime); margin-bottom: 20px;">Пушкинская карта для подростков и молодёжи России</h3>
+
+<p style="margin-bottom: 20px; font-size: 1.1rem;">
+<strong>Пушкинская карта</strong> – это стартовавший 1 сентября 2021 года российский проект по приобщению молодёжи к культурным ценностям.
+Суть его состоит в том, что каждый молодой человек нашей страны в возрастном промежутке от четырнадцати до двадцати двух лет
+получит денежные средства от государства на посещение культурных мероприятий.
+</p>
+
+<div class="info-grid" style="margin-top: 40px;">
+<div class="info-card" style="background: rgba(255, 255, 255, 0.05); color: white;">
+<h3><i class="fas fa-money-bill-wave"></i> Сумма на карте</h3>
+<p>В этом году на специальную карту, пластиковую или электронную, целевым образом зачисляется <strong>3000 рублей</strong>.</p>
+<p>Деньги предназначены для посещения музеев, экскурсий, театров, концертов и выставок.</p>
+</div>
+
+<div class="info-card" style="background: rgba(255, 255, 255, 0.05); color: white;">
+<h3><i class="fas fa-user-check"></i> Кому положена</h3>
+<p><strong>14-22 года</strong> – те, кому к 1 сентября текущего года уже есть 14, но ещё нет 23 лет.</p>
+<p>Если 14 лет исполняется позже, оформление карты возможно сразу после получения паспорта и регистрации на Госуслугах.</p>
+</div>
+
+<div class="info-card" style="background: rgba(255, 255, 255, 0.05); color: white;">
+<h3><i class="fas fa-calendar-alt"></i> Срок действия</h3>
+<p>Выделенные деньги необходимо израсходовать <strong>до 31 декабря</strong> текущего года.</p>
+<p>С наступлением Нового года карта обнуляется, а затем начисляется следующая сумма.</p>
+</div>
+</div>
+
+<h3 style="color: var(--lime); margin: 40px 0 20px;">Как оформить Пушкинскую карту</h3>
+
+<div class="pushkin-steps">
+<div class="pushkin-step">
+<div class="step-number">1</div>
+<h4>Регистрация на Госуслугах</h4>
+<p>Создайте учётную запись на портале Госуслуг</p>
+</div>
+
+<div class="pushkin-step">
+<div class="step-number">2</div>
+<h4>Скачать приложение</h4>
+<p>Установите приложение «Госуслуги.Культура»</p>
+</div>
+
+<div class="pushkin-step">
+<div class="step-number">3</div>
+<h4>Оформить карту</h4>
+<p>Следуя инструкции, оформите электронную или пластиковую карту</p>
+</div>
+</div>
+
+<div style="background-color: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 10px; margin-top: 40px;">
+<h4><i class="fas fa-shopping-cart"></i> Как покупать билеты по Пушкинской карте</h4>
+<p>Не на все культурные мероприятия можно купить билет по этой карте. Перед оплатой убедитесь, что учреждение культуры является участником программы.</p>
+<ul style="margin-top: 15px;">
+<li>Список доступных мероприятий на сайте «Культура.РФ»</li>
+<li>Используйте приложение «Госуслуги.Культура»</li>
+<li>Оплата в кассе организатора или на сайте</li>
+<li>Только полная стоимость билета (доплата другим способом не предусмотрена)</li>
+<li>Платить можно только за себя, все билеты – именные</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- КАК ПОЛУЧИТЬ БИЛЕТЫ -->
+<section class="ticket-info" id="tickets">
+<div class="container">
+<h2 class="section-title">Как получить билеты</h2>
+
+<div class="ticket-process">
+<h3 style="color: var(--orange); margin-bottom: 20px;"><i class="fas fa-ticket-alt"></i> Процесс получения билетов</h3>
+
+<div style="margin-bottom: 30px;">
+<h4>1. Оформление заказа</h4>
+<p>Выберите экскурсию, укажите свои данные (ФИО, контакты) и данные Пушкинской карты при необходимости.</p>
+</div>
+
+<div style="margin-bottom: 30px;">
+<h4>2. Подтверждение бронирования</h4>
+<p>После оформления заказа вы получите уведомление о подтверждении бронирования.</p>
+</div>
+
+<div style="margin-bottom: 30px;">
+<h4>3. Получение билетов</h4>
+<p><strong>Билеты будут отправлены вам на электронную почту, указанную при оформлении заказа.</strong></p>
+<p>В электронном билете будет указана вся необходимая информация: место и время сбора, контакты гида, программа экскурсии.</p>
+</div>
+
+<div style="margin-bottom: 30px;">
+<h4>4. В день экскурсии</h4>
+<p>Приходите к месту сбора за 25-30 минут до начала. Имейте при себе:</p>
+<ul style="margin-top: 10px;">
+<li>Распечатанный электронный билет или его QR-код на телефоне</li>
+<li>Документ, удостоверяющий личность (паспорт/свидетельство о рождении)</li>
+<li>Пушкинскую карту (при оплате по программе) в приложении "Культура"</li>
+</ul>
+</div>
+
+<div style="background-color: #FFF3CD; padding: 20px; border-radius: 8px; margin-top: 30px;">
+<h4><i class="fas fa-exclamation-triangle"></i> Важная информация</h4>
+<p><strong>Ответственность за указание верных данных лежит на покупателе.</strong></p>
+<p>При предъявлении билета контролёры могут попросить показать паспорт для подтверждения личности.</p>
+<p>В случае ошибки в данных свяжитесь с нами как можно скорее по контактам ниже.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="content-block" id="contacts">
+<div class="container">
+<h2 class="section-title">Контакты и информация</h2>
+
+<div class="info-grid">
+<div class="info-card">
+<h3><i class="fas fa-clock"></i> График работы</h3>
+<p><strong>Приём заявок и консультации:</strong></p>
+<p>Понедельник - Пятница : 9:00 - 20:00</p>
+<p>Суббота - Воскресенье : 10:00 - 16:00</p>
+
+
+<p style="margin-top: 20px;"><strong>Отправление экскурсий: г.Орел, улица Московская, остановка «Завод имени Медведева»</strong></p>
+<p>Ежедневно согласно расписанию конкретной экскурсии</p>
+</div>
+
+<div class="info-card">
+<h3><i class="fas fa-phone-alt"></i> Контакты</h3>
+<p><strong>Телефон:</strong> +7 (953)479-43-97</p>
+<p><strong>Email:</strong>flcl5846@gmail.com</p>
+<p><strong>Адрес офиса:</strong> г. Орёл, ул. Московская, д. 80</p>
+
+<div class="social-icons" style="margin-top: 20px;">
+<a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+<a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+<a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
+
+<div class="info-card">
+<h3><i class="fas fa-map-marker-alt"></i> Место сбора</h3>
+<p><strong>Основная точка отправления:</strong></p>
+<p>г. Орёл, ул. Московская
+остановка «Завод имени Медведева»
+(у фонтана)</p>
+
+<p style="margin-top: 20px;"><strong>Время сбора:</strong></p>
+<p>За 25-30 минут до времени отправления, указанного в билете</p>
+
+<p style="margin-top: 20px; font-size: 0.9rem; color: #777;">
+<i class="fas fa-info-circle"></i> Точное место и время указываются в электронном билете
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-about">
+<div class="footer-logo">Орёл — <span>Отправная точка</span></div>
+<p>Культурные приключения для школьников и студентов. Автобусные туры из Орла по Пушкинской карте.</p>
+<div class="pushkin-logo">
+<i class="fas fa-id-card"></i> Официальный партнёр программы «Пушкинская карта»
+</div>
+</div>
+
+<div class="footer-links">
+<h4>Быстрые ссылки</h4>
+<ul>
+<li><a href="#home">Главная</a></li>
+<li><a href="#included">Что включено</a></li>
+<li><a href="#tours">Экскурсии</a></li>
+<li><a href="#pushkin">Пушкинская карта</a></li>
+<li><a href="#tickets">Как получить билеты</a></li>
+<li><a href="#contacts">Контакты</a></li>
+</ul>
+</div>
+
+<div class="footer-contact">
+<h4>Связаться с нами</h4>
+<p><i class="fas fa-phone"></i> +7 (953) 479-43-97</p>
+<p><i class="fas fa-envelope"></i> flcl5846@gmail.com</p>
+<p><i class="fas fa-map-marker-alt"></i> г. Орёл, ул. Московская, д. 80</p>
+<p><i class="far fa-clock"></i> Пн-Пт: 9:00 - 20:00</p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>© 2025 «Орёл — Отправная точка». Все права защищены.</p>
+<p style="margin-top: 10px; font-size: 0.8rem;">
+Покупатель самостоятельно несет ответственность за указание верных данных (ФИО, данные Пушкинской карты) при покупке билета.
+Ошибки в данных могут привести к невозможности принять участие в экскурсии.
+</p>
+<p style="margin-top: 10px; font-size: 0.8rem;">
+Проект реализуется в рамках программы «Пушкинская карта» при поддержке Министерства культуры РФ.
+</p>
+</div>
+</div>
+</footer>
+
+<!-- JavaScript для мобильного меню и плавной прокрутки -->
+<script>
+// Мобильное меню
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+mobileMenu.addEventListener('click', () => {
+navMenu.classList.toggle('active');
+});
+
+// Закрыть меню при клике на ссылку
+document.querySelectorAll('nav ul li a').forEach(link => {
+link.addEventListener('click', () => {
+navMenu.classList.remove('active');
+});
+});
+
+// Плавная прокрутка для якорных ссылок
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if(targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+</script>
+</body>
+</html>
